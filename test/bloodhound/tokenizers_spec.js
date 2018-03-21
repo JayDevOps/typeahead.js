@@ -71,4 +71,16 @@ describe('tokenizers', function() {
 
     expect(tokens).toEqual(['big', 'deal', 'ok', 'buzz']);
   });
+
+  it('.obj.getObjTokenizer should accept external tokenizer functions', function() {
+    function byspace(str) {
+      str = _.toStr(str);
+      return str ? str.split(/\s+/) : [];
+    }
+    var tokenizerlocal = tokenizers.obj.getObjTokenizer(byspace);
+    var setkeys = tokenizerlocal("one");
+    var tokens = setkeys({ one: 'big-deal ok', two: 'buzz' });
+
+    expect(tokens).toEqual(['big-deal', 'ok']);
+  });
 });

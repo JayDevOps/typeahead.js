@@ -12,7 +12,8 @@ var tokenizers = (function() {
     whitespace: whitespace,
     obj: {
       nonword: getObjTokenizer(nonword),
-      whitespace: getObjTokenizer(whitespace)
+      whitespace: getObjTokenizer(whitespace),
+      getObjTokenizer: getObjTokenizer(tokenizer)
     }
   };
 
